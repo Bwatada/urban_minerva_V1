@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:core';
 import 'package:urban_minerva_v1/src/home.dart';
-// import 'dart:src/hello.dart';
-void main() => runApp(OtherName());
+import 'package:urban_minerva_v1/src/map.dart';
+import 'package:urban_minerva_v1/src/bike.dart';
+import 'package:urban_minerva_v1/src/settings.dart';
+import 'package:urban_minerva_v1/src/lock.dart';
 
-class OtherName extends StatelessWidget {
+// import 'dart:src/hello.dart';
+void main() => runApp(Main());
+
+class Main extends StatelessWidget {
   // This widget is the root of your application.
   final grey = Color.fromARGB(100,218,218,218);
   @override
@@ -13,15 +18,15 @@ class OtherName extends StatelessWidget {
     return MaterialApp(
       color: Colors.white,
       home: DefaultTabController(
-        length: 3,
+        length: 6,
         child: new Scaffold(
           body: TabBarView(
             children: [
               new Home(),
-              new Container(color: Colors.orange,),
-              new Container(
-                color: Colors.lightGreen,
-              ),
+              new Map(),
+              new Lock(),
+              new Bike(),
+              new Settings(),
             ],
           ),
           bottomNavigationBar: new TabBar(
@@ -30,10 +35,16 @@ class OtherName extends StatelessWidget {
                 icon: new Icon(Icons.home),
               ),
               Tab(
-                icon: new Icon(Icons.rss_feed),
+                icon: new Icon(Icons.map),
               ),
               Tab(
-                icon: new Icon(Icons.perm_identity),
+                icon: new Icon(Icons.vpn_key),
+              ),
+              Tab(
+                icon: new Icon(Icons.directions_bike),
+                ),
+              Tab(
+                icon: new Icon(Icons.settings),
               ),
             ],
             labelColor: Colors.white,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Home extends StatelessWidget {
+class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       color: Colors.white,
       home: Container(
-        color: Colors.green,
+        color: Colors.black,
       )
     );
   }
