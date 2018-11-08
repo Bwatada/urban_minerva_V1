@@ -6,16 +6,17 @@ import 'package:urban_minerva_v1/src/map.dart';
 import 'package:urban_minerva_v1/src/bike.dart';
 import 'package:urban_minerva_v1/src/settings.dart';
 import 'package:urban_minerva_v1/src/lock.dart';
-
 // import 'dart:src/hello.dart';
-void main() => runApp(Main());
-
+void main(){
+  runApp(Main());
+}
 class Main extends StatelessWidget {
   // This widget is the root of your application.
   final grey = Color.fromARGB(100,218,218,218);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       color: Colors.white,
       home: DefaultTabController(
         length: 6,
@@ -53,7 +54,7 @@ class Main extends StatelessWidget {
             indicatorPadding: EdgeInsets.all(5.0),
             indicatorColor: Colors.white,
           ),
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
         ),
       ),
     );
