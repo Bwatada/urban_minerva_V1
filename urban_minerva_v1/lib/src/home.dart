@@ -8,7 +8,6 @@ class Home extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children:[
-          Image.asset('img/title.png'),
           Image.asset('img/logo.png'),
           ],
       ),

@@ -13,6 +13,12 @@ void main(){
 class Main extends StatelessWidget {
   // This widget is the root of your application.
   final grey = Color.fromARGB(100,218,218,218);
+
+  final Home h = new Home();
+  final MapApp ma = new MapApp();
+  final Lock l = new Lock();
+  final Bike b = new Bike();
+  final Settings s = new Settings();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,13 +27,18 @@ class Main extends StatelessWidget {
       home: DefaultTabController(
         length: 6,
         child: new Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            title: 
+              Image.asset(
+                'img/titlelogo.png',
+                alignment: Alignment(0.0,0.0),
+              ),  
+            ),
           body: TabBarView(
             children: [
-              new Home(),
-              new MapApp(),
-              new Lock(),
-              new Bike(),
-              new Settings(),
+              h, ma, l, b, s,
             ],
           ),
           bottomNavigationBar: new TabBar(

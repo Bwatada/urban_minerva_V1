@@ -10,7 +10,13 @@ class MapApp extends StatefulWidget {
   State createState() => MapAppState();
 }
 
-class MapAppState extends State<MapApp> {
+class MapAppState extends State<MapApp>   
+  with AutomaticKeepAliveClientMixin
+
+  {
+
+  @override
+  bool get wantKeepAlive => true;
 
   GoogleMapController mapController;
 
@@ -100,27 +106,107 @@ class MapAppState extends State<MapApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Available Racks",
-      home: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.65,
-              child: GoogleMap(
-                onMapCreated: _onMapCreated,
+      home: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Align(
+                child:
+                  Center(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      child: GoogleMap(
+                        onMapCreated: _onMapCreated,
+                      ),
+                    ),
+                  ),
               ),
-            ),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "The Hoot #5",
+                              textScaleFactor: 0.9,
+                              style: TextStyle( 
+                                color: Color.fromRGBO(89, 89, 89, 1.0),
+                                decorationColor: null,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                            Text(
+                              "2 Racks Open",
+                              textScaleFactor: 0.9,
+                              style: TextStyle( 
+                                color: Color.fromRGBO(89, 89, 89, 1.0),
+                                decorationColor: null,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "@222 Spadina Ave",
+                              textScaleFactor: 0.9,
+                              style: TextStyle( 
+                                color: Color.fromRGBO(89, 89, 89, 1.0),
+                                decorationColor: null,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                            Text(
+                              "4km away",
+                              textScaleFactor: 0.9,
+                              style: TextStyle( 
+                                color: Color.fromRGBO(89, 89, 89, 1.0),
+                                decorationColor: null,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    RaisedButton(
+                      textColor: Colors.white,
+                      color: Color.fromRGBO(53, 147, 200, 1.0),
+                      child: Text('Reserve'),
+                      onPressed: mapController == null ? null : () {
+                        mapController.animateCamera(CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            bearing: 0,
+                            target: LatLng(_currentLocation['latitude'],_currentLocation['longitude']),
+                            tilt: 30.0,
+                            zoom: 17.0,
+                          ),
+                        ));
+                      },
+                    ),
+                    Text(
+                      "This will reserve an open rack for 15 minutes.",
+                      textScaleFactor: 0.9,
+                      style: TextStyle( 
+                        color: Color.fromRGBO(89, 89, 89, 1.0),
+                        decorationColor: null,
+                        fontWeight: FontWeight.bold
+                      )
+                    ),
+                  ],
+              ),
+            ],
           ),
-          Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: widgets,
-          ),
-          RaisedButton(
-            textColor: Colors.white,
-            color: Color.fromRGBO(53, 147, 200, 1.0),
-            child: Text('getLocation'),
+          floatingActionButton: FloatingActionButton(
             onPressed: mapController == null ? null : () {
               mapController.animateCamera(CameraUpdate.newCameraPosition(
                 CameraPosition(
@@ -131,30 +217,20 @@ class MapAppState extends State<MapApp> {
                 ),
               ));
             },
+            tooltip: 'Increment',
+            child: Icon(Icons.my_location),
           ),
-          Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [Text(
-                "note: this will reserve an open rack for 15 minutes",
-                textScaleFactor: 0.2,
-                style: TextStyle( 
-                  color: Color.fromRGBO(89, 89, 89, 1.0),
-                  decorationColor: null,
-                )
-              )],
-          ),
-        ],
-      ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        )
     );
   }
 
   void _onMapCreated(GoogleMapController controller) {
     setState(() { mapController = controller; });
     mapController.animateCamera(CameraUpdate.newCameraPosition(
-        const CameraPosition(
+        CameraPosition(
           bearing: 0,
-          target: LatLng(43.2608829,-79.9214141),
+          target: LatLng(_currentLocation['latitude'],_currentLocation['longitude']),
           tilt: 30.0,
           zoom: 17.0,
         )

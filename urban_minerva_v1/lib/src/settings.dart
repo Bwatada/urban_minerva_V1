@@ -9,6 +9,11 @@ class Settings extends StatelessWidget {
       color: Colors.white,
       home: Container(
         color: Colors.white,
+        child: Scaffold(
+          body: Center(
+            child: Text('Will be Settings Page'),
+          ), 
+        )
       )
     );
   }

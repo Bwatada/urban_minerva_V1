@@ -10,17 +10,8 @@ class Lock extends StatelessWidget {
       home: Container(
         color: Colors.white,
         child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            title: 
-              Image.asset(
-                'img/titlelogo.png',
-                alignment: Alignment(0.0,0.0),
-              ),  
-            ),
           body: Center(
-            child: Text('Scaffold'),
+            child: Text('Will be Lock Widget'),
           ),
           bottomNavigationBar: BottomAppBar(
             child: Container(height: 50.0,),
@@ -28,7 +19,7 @@ class Lock extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             onPressed: () {},
             tooltip: 'Increment',
-            child: Icon(Icons.add),
+            child: Icon(Icons.lock),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         )
