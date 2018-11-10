@@ -4,11 +4,21 @@ import 'package:flutter/widgets.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      color: Colors.white,
-      home: Container(
-        color: Colors.green,
-      )
-    );
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children:[
+          Image.asset('img/title.png'),
+          Image.asset('img/logo.png'),
+          ],
+      ),
+    // decoration: BoxDecoration(
+    //   image: DecorationImage(
+    //     image: AssetImage('img/logo.png'),
+    //     // ...
+    //   ),
+    //   // ...
+    // ),
+  );
   }
 }

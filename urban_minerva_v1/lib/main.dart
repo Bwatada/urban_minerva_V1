@@ -24,7 +24,7 @@ class Main extends StatelessWidget {
           body: TabBarView(
             children: [
               new Home(),
-              new Map(),
+              new MapApp(),
               new Lock(),
               new Bike(),
               new Settings(),
@@ -48,11 +48,11 @@ class Main extends StatelessWidget {
                 icon: new Icon(Icons.settings),
               ),
             ],
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.blue,
+            labelColor: Color.fromRGBO(53, 147, 200, 1.0),
+            unselectedLabelColor: Colors.grey,
             indicatorSize: TabBarIndicatorSize.label,
             indicatorPadding: EdgeInsets.all(5.0),
-            indicatorColor: Colors.white,
+            indicatorColor: Color.fromRGBO(53, 147, 200, 1.0),
           ),
           backgroundColor: Colors.white,
         ),
